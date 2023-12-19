@@ -1,0 +1,4 @@
+// This command file can be used to delete based on a match
+db.school.deleteMany(
+	{ "name": "Holberton school" }
+)

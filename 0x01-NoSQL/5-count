@@ -1,0 +1,2 @@
+// This command file can be used to find the number of documents in the specified collection
+db.school.count()

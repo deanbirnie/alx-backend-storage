@@ -1,0 +1,7 @@
+// This command file can be used to update documents by adding a new attribute
+db.school.update({
+	"name": "Holberton school"
+	},
+	{$set: {
+	       "address": "972 Mission street"
+	       }})

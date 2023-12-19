@@ -1,0 +1,2 @@
+// This command file can be used to find all documents starting with Holberton for the name
+db.school.find({ "name": /^Holberton/ })

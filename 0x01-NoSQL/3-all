@@ -1,0 +1,2 @@
+// This command file can be used to list all documents in a specified collection
+db.school.find()

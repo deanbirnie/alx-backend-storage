@@ -7,7 +7,7 @@ from pymongo import MongoClient
 if __name__ == "__main__":
     """Entry point - returns stats about nginx server"""
     client = MongoClient('mongodb://127.0.0.1:27017')
-    nginx_coll = client.my_db.nginx
+    nginx_coll = client.logs.nginx
 
     nginx_logs_count = nginx_coll.count_documents({})
     print("{} logs".format(nginx_logs_count))

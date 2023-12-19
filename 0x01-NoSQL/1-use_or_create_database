@@ -1,0 +1,2 @@
+// This command file can be used to switch to a specified database, creating it if it doesn't exist.
+use my_db

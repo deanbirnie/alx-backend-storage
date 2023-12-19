@@ -1,0 +1,2 @@
+// This command file can be used to find all matches
+db.school.find({ "name": "Holberton school" })

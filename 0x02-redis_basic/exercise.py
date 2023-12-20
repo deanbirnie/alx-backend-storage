@@ -5,6 +5,7 @@ reads and writes for caching and storing data
 """
 import redis
 import uuid
+from functools import wraps
 from typing import Union, Callable
 
 
@@ -57,3 +58,24 @@ class Cache:
         integers.
         """
         return self.get(key, fn=int)
+
+    @staticmethod
+    def count_calls(method: Callable) -> Callable:
+        """
+        Decorator to count the number of calls to a method.
+        """
+        @wraps(method)
+        def wrapper(self, *args, **kwargs):
+            key = method.__qualname__
+            self._redis.incr(key)
+            return method(self, *args, **kwargs)
+        return wrapper
+
+    @count_calls
+    def store(self, data: Union[str, bytes, int, float]) -> str:
+        """
+        Store data in Redis, incrementing the call count for the method.
+        """
+        key = str(uuid.uuid4())
+        self._redis.set(key, data)
+        return key
